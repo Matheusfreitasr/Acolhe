@@ -120,15 +120,23 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .container {
+      width: 100%;
       max-width: 1200px;
       margin-left: auto;
       margin-right: auto;
       padding-left: 1rem;
       padding-right: 1rem;
+      overflow-x: hidden;
+  }
+  
+  @media (max-width: 768px) {
+      .container {
+          padding-left: 0.75rem;
+          padding-right: 0.75rem;
+      }
   }
 
   /* Add more global styles or utility classes as needed */
 `;
 
 export default GlobalStyle;
-

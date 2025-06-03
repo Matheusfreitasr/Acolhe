@@ -7,6 +7,7 @@ const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  color: #A052E8;
 `;
 
 const ContentWrapper = styled.main`

@@ -6,7 +6,7 @@ const FormContainer = styled.div`
   max-width: 800px;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: ${props => props.theme.colors.primary};
+  background-color: ${props => props.theme.colors.progressWhite};
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 `;
@@ -88,8 +88,8 @@ const ContatoPage: React.FC = () => {
         {/* Optional: Add direct contact info if available */}
         <ContactInfo>
           <h2>Outros Canais</h2>
-          <p><strong>Email:</strong> contato@plataformalGBTQIAPN+.org (Exemplo)</p>
-          {/* <p><strong>Telefone:</strong> (XX) XXXX-XXXX (Se aplicável)</p> */}
+          <p><strong>Email:</strong> acolhe+@contato.org</p>
+          <p><strong>Telefone:</strong> (XX) XXXX-XXXX</p>
           {/* Add social media links here */}
         </ContactInfo>
 

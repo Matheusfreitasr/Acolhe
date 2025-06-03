@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage';
-import RegisterPage from '../pages/RegisterPage';
 import AtendimentosPage from '../pages/AtendimentosPage';
 import VoluntariadoPage from '../pages/VoluntariadoPage';
 import ProgramacaoPage from '../pages/ProgramacaoPage';
@@ -19,7 +18,6 @@ const AppRouter: React.FC = () => {
         {/* Public Routes */}
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/cadastro" element={<RegisterPage />} />
         <Route path="/atendimentos" element={<AtendimentosPage />} />
         <Route path="/seja-voluntario" element={<VoluntariadoPage />} />
         <Route path="/programacao" element={<ProgramacaoPage />} />
@@ -27,6 +25,8 @@ const AppRouter: React.FC = () => {
         <Route path="/locais-referencia" element={<LocaisReferenciaPage />} />
         <Route path="/quem-somos" element={<QuemSomosPage />} />
         <Route path="/contato" element={<ContatoPage />} />
+        <Route path="/atendimentos" element={<AtendimentosPage />} />
+        <Route path="/voluntariado" element={<VoluntariadoPage />} />
       </Routes>
     </Router>
   );

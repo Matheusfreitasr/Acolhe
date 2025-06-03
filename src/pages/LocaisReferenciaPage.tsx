@@ -1,200 +1,181 @@
 import React from 'react';
+import { Container, Row, Col, Card } from 'react-bootstrap';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import MainLayout from '../layouts/MainLayout';
 import styled from 'styled-components';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
 
 import logoCasaAurora from '../assets/casa_aurora.png';
 import logoTransviver from '../assets/casa_transviver.png';
 import logoCasaChama from '../assets/casa_chama.png';
 
-// Container for the page content (Consistent with other pages)
-const PageContainer = styled.div`
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+const DefaultIcon = L.icon({
+  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+  iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
 
-  h1 {
-    margin-bottom: 0.5rem;
-    color: ${props => props.theme.colors.primary};
-  }
+L.Marker.prototype.options.icon = DefaultIcon;
 
-  > p { // Target the main description paragraph
-    margin-bottom: 2rem;
-    color: ${props => props.theme.colors.textLight};
-    font-size: 1.1rem;
-  }
-
-  @media (max-width: ${props => props.theme.breakpoints.tablet}) {
-    padding: 1.5rem;
-    h1 { font-size: 1.8rem; }
-    > p { font-size: 1rem; margin-bottom: 1.5rem; }
-  }
-
-  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
-    padding: 1rem;
-    h1 { font-size: 1.6rem; }
-    > p { font-size: 0.95rem; margin-bottom: 1rem; }
-  }
+const PageContainer = styled(Container)`
+  padding-top: 2rem;
+  padding-bottom: 3rem;
 `;
 
-// Grid container for location cards
-const LocationsGrid = styled.div`
-  display: grid;
-  // Using 1fr for single column, adjust if multiple columns are desired on larger screens
-  grid-template-columns: 1fr; 
-  gap: 1.5rem;
-
-  // Example: If you want 2 columns on tablet and above:
-  // @media (min-width: ${props => props.theme.breakpoints.tablet}) {
-  //   grid-template-columns: repeat(2, 1fr);
-  // }
+const PageTitle = styled.h1`
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-family: 'Poppins', sans-serif;
 `;
 
-// Refined Location Card
-const LocationCard = styled.div`
-  border: 1px solid ${props => props.theme.colors.border};
-  padding: 1.5rem;
-  // Removed margin-bottom, handled by grid gap
-  border-radius: 8px;
-  background-color: ${props => props.theme.colors.progressWhite};
-  box-shadow: ${props => props.theme.shadows.card};
-  display: flex;
-  gap: 1.5rem;
-  align-items: flex-start; // Align items to the top
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+const PageDescription = styled.p`
+  color: #8A2BE2;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+`;
 
+const LocationCard = styled(Card)`
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-  }
-
-  img {
-    width: 80px; // Slightly smaller image
-    height: 80px;
-    object-fit: contain;
-    border-radius: 4px;
-    border: 1px solid ${props => props.theme.colors.border};
-    flex-shrink: 0; // Prevent image from shrinking
-  }
-
-  .location-details {
-    flex: 1;
-  }
-
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-    color: ${props => props.theme.colors.primary};
-  }
-
-  p {
-    margin-bottom: 0.3rem;
-    color: ${props => props.theme.colors.textLight};
-    font-size: 0.9rem;
-    line-height: 1.5;
-  }
-
-  p strong {
-      color: ${props => props.theme.colors.text};
-  }
-
-  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
-    flex-direction: column; // Stack image and details vertically
-    align-items: center; // Center items when stacked
-    text-align: center; // Center text
-    padding: 1rem;
-    gap: 1rem;
-
-    img {
-        width: 70px;
-        height: 70px;
-        margin-bottom: 0.5rem; // Add space below image
-    }
-
-    h3 { font-size: 1.1rem; }
-    p { font-size: 0.85rem; }
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   }
 `;
 
-const MapPlaceholder = styled.div`
-    height: 350px; // Adjusted height
-    background-color: ${props => props.theme.colors.lightGray};
-    border: 1px dashed ${props => props.theme.colors.border};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: ${props => props.theme.colors.textLight};
-    font-style: italic;
-    margin-top: 2rem;
-    border-radius: 8px;
-    text-align: center;
-    padding: 1rem;
+const LocationLogo = styled.img`
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 4px;
+  border: 1px solid #eee;
+`;
 
-    @media (max-width: ${props => props.theme.breakpoints.mobile}) {
-        height: 250px;
-        font-size: 0.9rem;
-    }
+const MapWrapper = styled.div`
+  height: 500px;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  
+  .leaflet-container {
+    height: 100%;
+    width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    height: 400px;
+  }
+  
+  @media (max-width: 576px) {
+    height: 350px;
+  }
 `;
 
 const LocaisReferenciaPage: React.FC = () => {
-  // Placeholder data - replace with API call later
+  // Dados das instituições com coordenadas reais
   const locations = [
     {
       id: 1,
       name: 'Casa Aurora',
       logo: logoCasaAurora, 
       services: 'Acolhimento, apoio psicossocial.',
-      contact: 'Contato: (XX) XXXX-XXXX / email@casaaurora.org',
-      address: 'Endereço: (Informação restrita ou pública, a definir)',
+      contact: 'Contato: (71) 3019-7545 / casadeacolhimentoaurora@gmail.com',
+      address: 'Salvador - BA',
+      position: [-12.216398644781878, -41.33731369735138] as [number, number],
     },
     {
       id: 2,
       name: 'Instituto Transviver',
       logo: logoTransviver, 
       services: 'Apoio jurídico, empregabilidade para pessoas trans.',
-      contact: 'Contato: (XX) YYYY-YYYY / contato@transviver.org',
-      address: 'Endereço: (Informação restrita ou pública, a definir)',
+      contact: 'Contato: (81) 98359009 / transviverbr@gmail.com',
+      address: 'RUA DA AURORA, APTO 0502 EDF SAO CRISTOVAO CXPST 1173. BOA VISTA, Recife - PE',
+      position: [-8.060916237750805, -34.881259367596854] as [number, number],
     },
     {
-        id: 3,
-        name: 'Casa Chama',
-        logo: logoCasaChama, 
-        services: 'Acolhimento, assistência social, atividades culturais.',
-        contact: 'Contato: (XX) ZZZZ-ZZZZ / falecom@casachama.org',
-        address: 'Endereço: (Informação restrita ou pública, a definir)',
+      id: 3,
+      name: 'Casa Chama',
+      logo: logoCasaChama, 
+      services: 'Acolhimento, assistência social, atividades culturais.',
+      contact: 'Contato:  (11) 99448-2641 / casachama440@gmail.com',
+      address: 'R. Jandaia, 128 - Bela Vista, São Paulo - SP',
+      position: [-23.554587994876265, -46.63796693787061] as [number, number], 
     },
-    // Add more locations here
   ];
+
+  // Centro do mapa (Brasil)
+  const mapCenter: [number, number] = [-15.7801, -47.9292];
+  const mapZoom = 4;
 
   return (
     <MainLayout>
       <PageContainer>
-        <h1>Locais de Referência</h1>
-        <p>Encontre casas de acolhida e outras instituições de apoio à comunidade LGBTQIAPN+.</p>
+        <PageTitle>Locais de Referência</PageTitle>
+        <PageDescription>
+          Encontre casas de acolhida e outras instituições de apoio à comunidade LGBTQIAPN+ em todo o Brasil.
+        </PageDescription>
 
-        <LocationsGrid>
-          {locations.map(location => (
-            <LocationCard key={location.id}>
-              <img src={location.logo} alt={`Logo ${location.name}`} />
-              <div className="location-details">
-                <h3>{location.name}</h3>
-                <p><strong>Serviços:</strong> {location.services}</p>
-                <p><strong>Contato:</strong> {location.contact}</p>
-                <p><strong>Endereço:</strong> {location.address}</p>
-                {/* Add button for more details if needed */}
-              </div>
-            </LocationCard>
+        <MapWrapper>
+          <MapContainer 
+            center={mapCenter} 
+            zoom={mapZoom} 
+            scrollWheelZoom={true}
+            style={{ height: '100%', width: '100%' }}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            {locations.map((location) => (
+              <Marker key={location.id} position={location.position}>
+                <Popup>
+                  <div>
+                    <h5>{location.name}</h5>
+                    <p>{location.address}</p>
+                    <p><small>{location.contact}</small></p>
+                  </div>
+                </Popup>
+              </Marker>
+            ))}
+          </MapContainer>
+        </MapWrapper>
+
+        <Row>
+          {locations.map((location) => (
+            <Col key={location.id} xs={12} md={6} lg={4}>
+              <LocationCard>
+                <Card.Body className="d-flex align-items-center">
+                  <LocationLogo src={location.logo} alt={`Logo ${location.name}`} />
+                  <div className="ms-3">
+                    <Card.Title className="mb-1">{location.name}</Card.Title>
+                    <Card.Text className="mb-1 small">{location.services}</Card.Text>
+                  </div>
+                </Card.Body>
+                <Card.Footer className="bg-white">
+                  <small className="text-muted d-block mb-1">{location.address}</small>
+                  <small className="text-muted">{location.contact}</small>
+                </Card.Footer>
+              </LocationCard>
+            </Col>
           ))}
-        </LocationsGrid>
-
-        {/* Placeholder for interactive map */}
-        <MapPlaceholder>
-          Área reservada para Mapa Interativo (Integração futura com Leaflet/Mapbox)
-        </MapPlaceholder>
+        </Row>
       </PageContainer>
     </MainLayout>
   );
 };
 
 export default LocaisReferenciaPage;
-
