@@ -145,12 +145,12 @@ const VagasPage: React.FC = () => {
       tags: ['Marketing Digital', 'SEO', 'Mídias Sociais'],
     },
     {
-      id: 3,
-      title: 'Assistente Administrativo Afirmativa LGBTQIAPN+',
-      company: 'ONG Acolher Mais',
-      location: 'Rio de Janeiro, RJ',
-      description: 'Vaga afirmativa para apoiar as atividades administrativas da organização.',
-      tags: ['Administrativo', 'ONG', 'Vaga Afirmativa'],
+        id: 3,
+        title: 'Assistente Administrativo Afirmativa LGBTQIAPN+',
+        company: 'ONG Acolher Mais',
+        location: 'Rio de Janeiro, RJ',
+        description: 'Vaga afirmativa para apoiar as atividades administrativas da organização.',
+        tags: ['Administrativo', 'ONG', 'Vaga Afirmativa'],
     }
     // Add more job examples if needed
   ];
