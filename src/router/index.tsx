@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import LoginPage from '../pages/LoginPage';
 import CadastroPage from '../pages/CadastroPage';
-import AtendimentosPage from '../pages/AtendimentosPage';
 import VagasPage from '../pages/VagasPage';
 import QuemSomosPage from '../pages/QuemSomosPage';
 import ContatoPage from '../pages/ContatoPage';
@@ -22,7 +21,6 @@ const AppRouter: React.FC = () => {
         <Route path="/vagas" element={<VagasPage />} />
         <Route path="/quem-somos" element={<QuemSomosPage />} />
         <Route path="/contato" element={<ContatoPage />} />
-        <Route path="/atendimentos" element={<AtendimentosPage />} />
         <Route path="/politica-privacidade" element={<PoliticaPrivacidadePage />} />
         <Route path="/termos-uso" element={<TermosUsoPage />} />
       </Routes>
