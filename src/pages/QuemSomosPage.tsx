@@ -31,7 +31,7 @@ const QuemSomosPage: React.FC = () => {
         <section>
           <h2>Nossa Missão</h2>
           <p>
-            Nossa missão é criar um espaço digital seguro, acolhedor e informativo que conecte a comunidade LGBTQIAPN+ a uma rede de apoio voluntário qualificado. Buscamos fortalecer indivíduos, promover o bem-estar e combater as desigualdades, oferecendo acesso facilitado a serviços essenciais de saúde mental, assistência jurídica, apoio social e oportunidades de emprego.
+            Nossa missão é criar um espaço digital seguro, acolhedor e informativo que conecte a comunidade LGBTQIAPN+ a uma rede de apoio voluntário qualificado. Buscamos fortalecer indivíduos, promover o bem-estar e combater as desigualdades, oferecendo oportunidades de emprego.
           </p>
         </section>
 
