@@ -102,11 +102,9 @@ const Navbar: React.FC = () => {
         <BootstrapNavbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
             <NavLink as={Link} to="/" onClick={() => setExpanded(false)}>Início</NavLink>
-            <NavLink as={Link} to="/atendimentos" onClick={() => setExpanded(false)}>Atendimentos</NavLink>
             <NavLink as={Link} to="/vagas" onClick={() => setExpanded(false)}>Vagas</NavLink>
-            <NavLink as={Link} to="/programacao" onClick={() => setExpanded(false)}>Programação</NavLink>
-            <NavLink as={Link} to="/locais-referencia" onClick={() => setExpanded(false)}>Locais de Apoio</NavLink>
-            <NavLink as={Link} to="/seja-voluntario" onClick={() => setExpanded(false)}>Seja Voluntário</NavLink>
+            <NavLink as={Link} to="/quem-somos" onClick={() => setExpanded(false)}>Quem Somos</NavLink>
+            <NavLink as={Link} to="/contato" onClick={() => setExpanded(false)}>Contato</NavLink>
             <LoginButton as={Link} to="/login" onClick={() => setExpanded(false)}>Login</LoginButton>
           </Nav>
         </BootstrapNavbar.Collapse>

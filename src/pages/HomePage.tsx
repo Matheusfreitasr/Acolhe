@@ -4,10 +4,7 @@ import { Container, Row, Col, Card } from 'react-bootstrap';
 import MainLayout from '../layouts/MainLayout';
 import styled from 'styled-components';
 
-import iconAtendimentos from '../assets/icon_atendimentos.png';
 import iconVagas from '../assets/icon_vagas.png';
-import iconProgramacao from '../assets/icon_programacao.png';
-import iconLocaisApoio from '../assets/icon_locais_apoio.png';
 import heroBackground from '../assets/hero_background.jpg';
 
 const HeroSection = styled.section`
@@ -97,62 +94,27 @@ const HomePage: React.FC = () => {
     <MainLayout>
       <HeroSection>
         <h1>Bem-vindo(a) à Acolhe+!</h1>
-        <p>Conectando você a uma rede de apoio voluntário, informações e oportunidades com respeito e diversidade.</p>
+        <p>Conectando você às melhores oportunidades de emprego com respeito e diversidade.</p>
         <ButtonContainer>
-          <button className="btn-primary" onClick={() => navigate('/atendimentos')}>
-            Buscar Ajuda
+          <button className="btn-primary" onClick={() => navigate('/vagas')}>
+            Ver Vagas
           </button>
-          <button className="btn-secondary" onClick={() => navigate('/voluntariado')}>
-            Quero Ser Voluntário(a)
+          <button className="btn-secondary" onClick={() => navigate('/cadastro')}>
+            Cadastrar-se
           </button>
         </ButtonContainer>
       </HeroSection>
 
       <Container className="py-5">
-        <Row className="g-4">
-          <Col xs={12} md={6} lg={3}>
-            <ServiceCard className="text-center p-3">
-              <Card.Img variant="top" src={iconAtendimentos} alt="Ícone Atendimentos" />
-              <Card.Body>
-                <Card.Title>Atendimentos</Card.Title>
-                <Card.Text>
-                  Apoio jurídico, psicológico e social com profissionais voluntários.
-                </Card.Text>
-              </Card.Body>
-            </ServiceCard>
-          </Col>
-
-          <Col xs={12} md={6} lg={3}>
-            <ServiceCard className="text-center p-3">
+        <Row className="g-4 justify-content-center">
+          <Col xs={12} md={8} lg={6}>
+            <ServiceCard className="text-center p-4" onClick={() => navigate('/vagas')} style={{cursor: 'pointer'}}>
               <Card.Img variant="top" src={iconVagas} alt="Ícone Vagas de Emprego" />
               <Card.Body>
                 <Card.Title>Vagas de Emprego</Card.Title>
                 <Card.Text>
-                  Oportunidades em empresas que valorizam a diversidade e inclusão.
-                </Card.Text>
-              </Card.Body>
-            </ServiceCard>
-          </Col>
-
-          <Col xs={12} md={6} lg={3}>
-            <ServiceCard className="text-center p-3">
-              <Card.Img variant="top" src={iconProgramacao} alt="Ícone Programação" />
-              <Card.Body>
-                <Card.Title>Programação</Card.Title>
-                <Card.Text>
-                  Participe de eventos, palestras e workshops online e presenciais.
-                </Card.Text>
-              </Card.Body>
-            </ServiceCard>
-          </Col>
-
-          <Col xs={12} md={6} lg={3}>
-            <ServiceCard className="text-center p-3">
-              <Card.Img variant="top" src={iconLocaisApoio} alt="Ícone Locais de Apoio" />
-              <Card.Body>
-                <Card.Title>Locais de Apoio</Card.Title>
-                <Card.Text>
-                  Encontre casas de acolhida e outras instituições parceiras perto de você.
+                  Encontre oportunidades em empresas que valorizam a diversidade e inclusão. 
+                  Cadastre-se e candidate-se às vagas que mais combinam com o seu perfil.
                 </Card.Text>
               </Card.Body>
             </ServiceCard>
