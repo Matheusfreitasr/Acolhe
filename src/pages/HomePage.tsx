@@ -93,7 +93,7 @@ const HomePage: React.FC = () => {
   return (
     <MainLayout>
       <HeroSection>
-        <h1>Bem-vindo(a) à Acolhe+!</h1>
+        <h1>Bem-vindx à Acolhe+!</h1>
         <p>Conectando você às melhores oportunidades de emprego com respeito e diversidade.</p>
         <ButtonContainer>
           <button className="btn-primary" onClick={() => navigate('/vagas')}>
