@@ -10,11 +10,8 @@
 Este projeto uma Plataforma de Apoio LGBTQIAPN+, uma iniciativa que visa conectar a comunidade LGBTQIAPN+ a uma rede de apoio voluntário, informações e oportunidades com respeito e diversidade.
 
 **Propósito:** Reunir entidades e profissionais para oferecer atendimento voluntário, incluindo:
-*   Atendimentos online com profissionais da saúde mental.
-*   Encaminhamentos para casas de acolhida.
-*   Orientação jurídica.
+
 *   Divulgação de vagas de emprego destinadas ao público LGBTQIAPN+.
-*   Programação de eventos, palestras e workshops.
 
 **Alinhamento com ODS:** O projeto está alinhado aos Objetivos de Desenvolvimento Sustentável (ODS) da ONU:
 *   **ODS 3 (Saúde e Bem-Estar):** Promovendo o acesso à saúde física e mental, prevenção de doenças e suporte emocional.
