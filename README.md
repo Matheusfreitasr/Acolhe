@@ -1,4 +1,10 @@
-# Plataforma de Apoio LGBTQIAPN+ 
+# Squad 45 - Plataforma de Apoio LGBTQIAPN+ 
+**Integrantes:** 
+*   Anderson Roberto Silva Da Rosa
+*   Lais De Oliveira Araújo Neves
+*   Matheus Rabelo de Freitas
+*   Tayrlan Silva Marques
+
 ## Sobre o Projeto
 
 Este projeto uma Plataforma de Apoio LGBTQIAPN+, uma iniciativa que visa conectar a comunidade LGBTQIAPN+ a uma rede de apoio voluntário, informações e oportunidades com respeito e diversidade.
@@ -73,7 +79,8 @@ Certifique-se de ter o seguinte instalado:
     yarn dev
     ```
 2.  **Acesse a Aplicação:**
-    Abra seu navegador e acesse o endereço fornecido no terminal (geralmente `http://localhost:5173/`). A aplicação será carregada e atualizará automaticamente conforme você edita o código (Hot Module Replacement).
+    Abra seu navegador e acesse o endereço fornecido no terminal ( `http://localhost:5173/` ). OU
+    Deploy do FrontEnd: https://acolhe-three.vercel.app
 
 ### Gerando o Build para Produção
 
