@@ -144,7 +144,7 @@ const PoliticaPrivacidadePage: React.FC = () => {
                 </ul>
 
                 <LastUpdated>
-                  Última atualização: Janeiro de 2025
+                  Última atualização: Julho de 2025
                 </LastUpdated>
               </Content>
             </Col>
