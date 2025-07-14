@@ -53,7 +53,7 @@ Certifique-se de ter o seguinte instalado:
 1.  **Clone o Repositório (se aplicável):**
     ```bash
     git clone <URL_DO_REPOSITORIO>
-    cd plataforma-lgbtqiapn-frontend
+    cd plataforma-lgbtqiapn
     ```
     *Substitua `<URL_DO_REPOSITORIO>` pela URL correta.*
 
